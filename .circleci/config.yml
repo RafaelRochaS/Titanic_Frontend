@@ -9,6 +9,12 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
+      - run:
+          name: Install Angular
+          command: npm install -g @angular/cli
+      - run:
+          name: Validate Angular
+          command: ng v
 workflows:
   static-testing:
     jobs:
