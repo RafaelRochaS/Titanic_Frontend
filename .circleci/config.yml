@@ -1,0 +1,15 @@
+version: 2.1
+
+jobs:
+  build-test:  # If more build steps are required, add them here
+    docker:
+      - image: circleci/node:10.19.0
+    steps:
+      - checkout landing-page
+      - run:
+          name: Install dependencies
+          command: npm install
+workflows:
+  static-testing:
+    jobs:
+      - build-test
