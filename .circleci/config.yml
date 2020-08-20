@@ -40,7 +40,7 @@ jobs:
 workflows:
   test-deploy:
     jobs:
-      - build-test
+      - build-test:
           filters:
             branches:
               only:
