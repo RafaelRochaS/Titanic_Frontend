@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 80;
 const path = require("path");
 
-const fileDirectory = path.resolve(__dirname, "./titanic/dist")
+const fileDirectory = path.resolve(__dirname, "./dist/titanic")
 
 app.use(express.static(fileDirectory));
 
