@@ -1,21 +1,49 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@1.2.2
+
 jobs:
   build-test:  # If more build steps are required, add them here
+    working_directory: ~/titanic
     docker:
-      - image: circleci/node:10.19.0
+      - image: circleci/node:10-browsers
     steps:
       - checkout
+      - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package-lock.json" }}
+        - v1-dependencies-
       - run:
           name: Install dependencies
           command: npm install
+      - save_cache:
+        key: v1-dependencies-{{ checksum "package-lock.json" }}
+        paths:
+          - node_modules
       - run:
-          name: Install Angular
-          command: sudo npm install -g @angular/cli
+          name: Linting
+          command: npm run lint
       - run:
-          name: Validate Angular
-          command: ng v
+          name: Testing
+          command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run:
+          name: End to End Test
+          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+#  deploy:
+#    executor: heroku/default
+#    steps:
+#      - checkout
+#      - heroku/install
+#      - heroku/deploy-via-git
+
 workflows:
-  static-testing:
+  test-deploy:
     jobs:
       - build-test
+      #- deploy
+        filters:
+          branches:
+            only:
+              - develop
+              - master
