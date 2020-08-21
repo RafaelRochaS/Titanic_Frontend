@@ -49,7 +49,7 @@ workflows:
   test-deploy:
     jobs:
       - build-test:
-          context: SonarCloud  
+          context: sonarcloud  
       - deploy:
           requires:
             - build-test
