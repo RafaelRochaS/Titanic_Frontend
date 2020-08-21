@@ -48,7 +48,7 @@ jobs:
 workflows:
   test-deploy:
     jobs:
-      - build-test
+      - build-test:
           context: SonarCloud  
       - deploy:
           requires:
