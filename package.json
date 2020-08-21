@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "lite-server": "./node_modules/.bin/lite-server --baseDir='dist/titanic'"
+    "lite-server": "./node_modules/.bin/lite-server --baseDir='dist/titanic'",
+    "coverage": "./node_modules/.bin/coveralls"
   },
   "private": true,
   "dependencies": {
@@ -33,11 +34,14 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "coveralls": "^3.1.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "^2.0.3",
     "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-coveralls": "^2.1.0",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "lite-server": "^2.5.4",

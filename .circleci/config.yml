@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@1.2.2
+  coveralls: coveralls/coveralls@1.0.6
 
 jobs:
   build-test:  # If more build steps are required, add them here
@@ -28,6 +29,8 @@ jobs:
       - run:
           name: End to End Test
           command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - coveralls/upload:
+          verbose: true
   deploy:
     executor: heroku/default
     steps:
