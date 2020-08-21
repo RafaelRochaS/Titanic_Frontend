@@ -31,6 +31,7 @@ jobs:
           command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
       - coveralls/upload:
           verbose: true
+          path_to_lcov: ./coverage/lcov.info
   deploy:
     executor: heroku/default
     steps:
