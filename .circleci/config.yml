@@ -48,12 +48,10 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git:
-          pre-deploy:
-            - run: 
-                name: Build for Production
-                command: npm build --prod
-
+      - run: 
+          name: Build for Production
+          command: npm build --prod
+      - heroku/deploy-via-git
 
 
 workflows:
