@@ -49,7 +49,7 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git:
-          pre-steps:
+          pre-deploy:
             - run: 
                 name: Build for Production
                 command: npm build --prod
