@@ -38,7 +38,7 @@ module.exports = function (config) {
     restartOnFileChange: true,
     coverageReporter: {
       type: 'lcov',
-      dir: 'coverage/'
+      dir: 'coverage/*/'
     }
   });
 };
