@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "lite-server": "./node_modules/.bin/lite-server --baseDir='dist/titanic'",
-    "coverage": "./node_modules/.bin/coveralls"
+    "coverage": "./node_modules/.bin/coveralls",
+    "package-audit": "./node_modules/.bin/npm-audit --low=10"
   },
   "private": true,
   "dependencies": {

@@ -29,9 +29,13 @@ jobs:
       - run:
           name: End to End Test
           command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - run:
+          name: Security Audit
+          command: npm run package-audit
       - coveralls/upload:
           verbose: true
-          path_to_lcov: "./coverage/lcov.info"
+          path_to_lcov: "./coverage/Chrome 84.0.4147.125 (Linux x86_64)lcov.info"
+
   deploy:
     executor: heroku/default
     steps:
