@@ -34,7 +34,7 @@ jobs:
           command: npm run package-audit
       - coveralls/upload:
           verbose: true
-          path_to_lcov: "./coverage/Chrome 84.0.4147.125 (Linux x86_64)lcov.info"
+          path_to_lcov: "./coverage/Chrome 84.0.4147.105 (Linux x86_64)/lcov.info"
 
   deploy:
     executor: heroku/default
