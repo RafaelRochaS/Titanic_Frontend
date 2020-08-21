@@ -11,16 +11,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
           name: Install dependencies
           command: npm install
       - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
+            - "node_modules"
       - run:
           name: Linting
           command: npm run lint
@@ -40,13 +38,13 @@ jobs:
 workflows:
   test-deploy:
     jobs:
-      - build-test:
+      - build-test
+      - deploy:
+          requires:
+            - build-test
           filters:
             branches:
               only:
                 - develop
                 - master
-      - deploy:
-          requires:
-            - build-test
             
