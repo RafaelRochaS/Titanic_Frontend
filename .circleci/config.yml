@@ -37,25 +37,40 @@ jobs:
       - coveralls/upload:
           verbose: true
           path_to_lcov: "coverage/*/lcov.info"
-
-  deploy:
+  deploy-develop:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
+  deploy-prod:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          pre-steps:
+            - run: npm build --prod
+
+
 
 workflows:
   test-deploy:
     jobs:
       - build-test:
           context: SonarCloud  
-      - deploy:
+      - deploy-develop:
           requires:
             - build-test
           filters:
             branches:
               only:
                 - develop
+      - deploy-prod:
+          requires:
+            - build-test
+          filters:
+            branches:
+              only:
                 - master
             
