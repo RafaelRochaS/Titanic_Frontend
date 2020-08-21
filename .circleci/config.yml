@@ -48,8 +48,8 @@ jobs:
 workflows:
   test-deploy:
     jobs:
-      - build-test:
-          context: sonarcloud  
+      - build-test
+#          context: sonarcloud  
       - deploy:
           requires:
             - build-test
