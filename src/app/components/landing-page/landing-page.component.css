@@ -4,5 +4,8 @@
 
 #description {
     margin-top: 4rem;
-    text-align: center;
+    text-align: justify;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
 }
