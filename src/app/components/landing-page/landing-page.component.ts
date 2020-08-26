@@ -12,8 +12,4 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  next(): void{
-    
-  }
 }
