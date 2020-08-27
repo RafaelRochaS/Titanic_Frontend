@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 * {
-    font-family: 'Alata';
+    font-family: 'Alata', sans-serif;
 }
 
 body {
     background-color: #e1e3e1;
 }
+html, body { height: 100%; }

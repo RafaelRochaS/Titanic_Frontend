@@ -2,6 +2,8 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@1.2.2
+  coveralls: coveralls/coveralls@1.0.6
+  sonarcloud: sonarsource/sonarcloud@1.0.2
 
 jobs:
   build-test:  # If more build steps are required, add them here
@@ -11,42 +13,64 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
           name: Install dependencies
           command: npm install
       - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
+            - "node_modules"
       - run:
           name: Linting
           command: npm run lint
       - run:
           name: Testing
           command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      #- run:
+      #    name: End to End Test
+      #    command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
       - run:
-          name: End to End Test
-          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
-  deploy:
+          name: Security Audit
+          command: npm run package-audit
+      - sonarcloud/scan
+      - coveralls/upload:
+          verbose: true
+          path_to_lcov: "coverage/*/lcov.info"
+  deploy-develop:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
+  deploy-prod:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run: 
+          name: Build for Production
+          command: npm build --prod
+      - heroku/deploy-via-git
+
 
 workflows:
   test-deploy:
     jobs:
       - build-test:
+          context: SonarCloud  
+      - deploy-develop:
+          requires:
+            - build-test
           filters:
             branches:
               only:
                 - develop
-                - master
-      - deploy:
+      - deploy-prod:
           requires:
             - build-test
+          filters:
+            branches:
+              only:
+                - master
             
