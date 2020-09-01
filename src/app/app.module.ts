@@ -15,13 +15,15 @@ import { PersonalDetailsComponent } from './components/personal-details/personal
     AppComponent,
     LandingPageComponent,
     PersonalDetailsComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

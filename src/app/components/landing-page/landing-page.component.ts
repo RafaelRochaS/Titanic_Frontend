@@ -12,7 +12,6 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   navigatePersonalDetails(): void {
     this.router.navigate(['/personal-details']);
   }
