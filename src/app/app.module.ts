@@ -21,7 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
