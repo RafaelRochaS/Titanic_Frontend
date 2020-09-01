@@ -34,9 +34,9 @@ jobs:
           name: Security Audit
           command: npm run package-audit
       - sonarcloud/scan
-      - coveralls/upload:
-          verbose: true
-          path_to_lcov: "coverage/*/lcov.info"
+      #- coveralls/upload:
+      #    verbose: true
+      #    path_to_lcov: "coverage/*/lcov.info"
   deploy-develop:
     executor: heroku/default
     steps:
