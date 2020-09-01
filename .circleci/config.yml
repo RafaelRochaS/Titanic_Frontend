@@ -24,9 +24,9 @@ jobs:
       - run:
           name: Linting
           command: npm run lint
-      - run:
-          name: Testing
-          command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      #- run:
+      #    name: Testing
+      #    command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       #- run:
       #    name: End to End Test
       #    command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
@@ -34,9 +34,9 @@ jobs:
           name: Security Audit
           command: npm run package-audit
       - sonarcloud/scan
-      - coveralls/upload:
-          verbose: true
-          path_to_lcov: "coverage/*/lcov.info"
+      #- coveralls/upload:
+      #    verbose: true
+      #    path_to_lcov: "coverage/*/lcov.info"
   deploy-develop:
     executor: heroku/default
     steps:
