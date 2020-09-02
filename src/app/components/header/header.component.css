@@ -3,6 +3,13 @@
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.subheader {
+    font-size:1.3rem;
+    font-weight: 500;
 }
 
 .container {
