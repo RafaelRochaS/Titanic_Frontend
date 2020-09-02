@@ -9,13 +9,14 @@ import { AppComponent } from './app.component';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    PersonalDetailsComponent
-    HeaderComponent
+    PersonalDetailsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,6 @@ import { PersonalDetailsComponent } from './components/personal-details/personal
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
