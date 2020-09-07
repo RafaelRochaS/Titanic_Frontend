@@ -1,3 +1,32 @@
 p {
     text-align: center;
+    background-image: "../../../assets/images/ship-3401500_1280.jpg";
+}
+
+#boat-image {
+    width: 23rem;
+    height: 9rem;
+    display: block;
+    margin: auto;
+}
+
+#btn-back {
+    margin: 1.5rem 0rem 1rem 0.1rem;
+}
+
+.user-data {
+    margin-top: 1rem;
+}
+
+#btn-next {
+    float: right;
+    position: relative;
+    top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    #boat-image {
+        width: 35rem;
+        height: 13.5rem;
+    }
 }

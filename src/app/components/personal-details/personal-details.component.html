@@ -1,7 +1,52 @@
-<div class="row container d-flex justify-content-center">
+<div class="container d-flex justify-content-center">
     <div class="row">
         <div class="col">
-            <p>Testing</p>
+            <p id="description">
+                The Titanic sank in 1912, and with it many lives were lost. People from different lives and different backgrounds, coming from different places.
+                <br >
+                <br >
+                There were people from diverse ages, all genders, and three passenger classes, ranging from VIP to economic. 
+                <br >
+                <br >
+                The ship also passed on Cherbourg, France and Queenstown, Ireland after departing from Southampton, England.
+                <br >
+                <br >
+                Let's see if you would survive! Input data below, and the machine learning model will predict whether or not you would have made it out alive of the Titanic.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="../../../assets/images/ship-3401500_1280.jpg" alt="Sunken Boat" id="boat-image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form class="user-data">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Ex. Patricia" >
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Age</mat-label>
+                    <input matInput type="number" placeholder="30" >
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <mat-select>
+                        <mat-option>
+                            Male
+                            Female
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" (click)="back()" mat-raised-button class="btn" id="btn-back">Back</button>
+            <button type="button" mat-raised-button class="btn" id="btn-next">Next</button>
         </div>
     </div>
 </div>

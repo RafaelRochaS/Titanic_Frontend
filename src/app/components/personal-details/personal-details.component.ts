@@ -12,4 +12,7 @@ export class PersonalDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  back(): void {
+    window.history.back();
+  }
 }
