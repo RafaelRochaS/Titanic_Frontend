@@ -48,31 +48,31 @@ export class PersonalDetailsComponent implements OnInit {
   inputValidation(): void {
 
     if (this.nameRequiredControl.value === '') {
-      this.nameRequiredControl.setErrors({'required': true, emitEvent: true});
+      this.nameRequiredControl.setErrors({required: true, emitEvent: true});
       this.nameRequiredControl.updateValueAndValidity();
       this.nameRequiredControl.markAllAsTouched();
     }
 
     if (this.ageRequiredControl.value === '') {
-      this.ageRequiredControl.setErrors({'required': true, emitEvent: true});
+      this.ageRequiredControl.setErrors({required: true, emitEvent: true});
       this.ageRequiredControl.updateValueAndValidity();
       this.ageRequiredControl.markAllAsTouched();
     }
 
     if (this.genderRequiredControl.value === '') {
-      this.genderRequiredControl.setErrors({'required': true, emitEvent: true});
+      this.genderRequiredControl.setErrors({required: true, emitEvent: true});
       this.genderRequiredControl.updateValueAndValidity();
       this.genderRequiredControl.markAllAsTouched();
     }
 
     if (this.ticketRequiredControl.value === '') {
-      this.ticketRequiredControl.setErrors({'required': true, emitEvent: true});
+      this.ticketRequiredControl.setErrors({required: true, emitEvent: true});
       this.ticketRequiredControl.updateValueAndValidity();
       this.ticketRequiredControl.markAllAsTouched();
     }
 
     if (this.portRequiredControl.value === '') {
-      this.portRequiredControl.setErrors({'required': true, emitEvent: true});
+      this.portRequiredControl.setErrors({required: true, emitEvent: true});
       this.portRequiredControl.updateValueAndValidity();
       this.portRequiredControl.markAllAsTouched();
     }
