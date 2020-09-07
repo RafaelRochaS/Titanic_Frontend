@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+
+interface SelectValues {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-personal-details',
@@ -7,9 +13,79 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalDetailsComponent implements OnInit {
 
+  genders: SelectValues[] = [
+    { value: 'male', viewValue: 'Male'},
+    { value: 'female', viewValue: 'Female'}
+  ];
+
+  ticketClass: SelectValues[] = [
+    { value: '1', viewValue: 'First Class'},
+    { value: '2', viewValue: 'Second Class'},
+    { value: '3', viewValue: 'Third Class'}
+  ];
+
+  portOfEmbarkation: SelectValues[] = [
+    { value: 'C', viewValue: 'Cherbourg, France' },
+    { value: 'Q', viewValue: 'Queenstown, Ireland' },
+    { value: 'S', viewValue: 'Southampton, England' },
+  ];
+
+  nameRequiredControl = new FormControl('', Validators.required);
+  ageRequiredControl = new FormControl('', Validators.required);
+  ticketRequiredControl = new FormControl('', Validators.required);
+  genderRequiredControl = new FormControl('', Validators.required);
+  portRequiredControl = new FormControl('', Validators.required);
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  back(): void {
+    window.history.back();
+  }
+
+  inputValidation(): void {
+
+    if (this.nameRequiredControl.value === '') {
+      this.nameRequiredControl.setErrors({required: true, emitEvent: true});
+      this.nameRequiredControl.updateValueAndValidity();
+      this.nameRequiredControl.markAllAsTouched();
+    }
+
+    if (this.ageRequiredControl.value === '') {
+      this.ageRequiredControl.setErrors({required: true, emitEvent: true});
+      this.ageRequiredControl.updateValueAndValidity();
+      this.ageRequiredControl.markAllAsTouched();
+    }
+
+    if (this.genderRequiredControl.value === '') {
+      this.genderRequiredControl.setErrors({required: true, emitEvent: true});
+      this.genderRequiredControl.updateValueAndValidity();
+      this.genderRequiredControl.markAllAsTouched();
+    }
+
+    if (this.ticketRequiredControl.value === '') {
+      this.ticketRequiredControl.setErrors({required: true, emitEvent: true});
+      this.ticketRequiredControl.updateValueAndValidity();
+      this.ticketRequiredControl.markAllAsTouched();
+    }
+
+    if (this.portRequiredControl.value === '') {
+      this.portRequiredControl.setErrors({required: true, emitEvent: true});
+      this.portRequiredControl.updateValueAndValidity();
+      this.portRequiredControl.markAllAsTouched();
+    }
+
+    if (this.nameRequiredControl.value === '' ||
+        this.ageRequiredControl.value === '' ||
+        this.genderRequiredControl.value === '' ||
+        this.ticketRequiredControl.value === '' ||
+        this.portRequiredControl.value === '') {
+          console.log('Something is not filled');
+          return;
+    } else {
+      console.log('All entries filled');
+    }
+  }
 }

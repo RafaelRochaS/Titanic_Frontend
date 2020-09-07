@@ -1,7 +1,72 @@
-<div class="row container d-flex justify-content-center">
+<div class="container d-flex justify-content-center">
     <div class="row">
         <div class="col">
-            <p>Testing</p>
+            <p id="description">
+                The Titanic sank in 1912, and with it many lives were lost. People from different lives and different backgrounds, coming from different places.
+                <br >
+                <br >
+                There were people from diverse ages, all genders, and three passenger classes, ranging from VIP to economic. 
+                <br >
+                <br >
+                The ship also passed on Cherbourg, France and Queenstown, Ireland after departing from Southampton, England.
+                <br >
+                <br >
+                Let's see if you would survive! Input data below, and the machine learning model will predict whether or not you would have made it out alive of the Titanic.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="../../../assets/images/ship-3401500_1280.jpg" alt="Sunken Boat" id="boat-image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form class="user-data">
+                <mat-form-field id="name">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Ex. Patricia" [formControl]="nameRequiredControl" required>
+                    <mat-error *ngIf="nameRequiredControl.hasError('required')">Please input a value</mat-error>
+                </mat-form-field>
+                <mat-form-field id="age">
+                    <mat-label>Age</mat-label>
+                    <input matInput type="number" placeholder="30" [formControl]="ageRequiredControl" required>
+                    <mat-error *ngIf="ageRequiredControl.hasError('required')">Please input a number</mat-error>
+                </mat-form-field>
+                <mat-form-field id="gender">
+                    <mat-label>Gender</mat-label>
+                    <mat-select [formControl]="genderRequiredControl" required>
+                        <mat-option *ngFor="let gender of genders" [value]='gender.value'>
+                            {{ gender.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="genderRequiredControl.hasError('required')">Please choose a value</mat-error>
+                </mat-form-field>
+                <mat-form-field id="ticket">
+                    <mat-label>Ticket Class</mat-label>
+                    <mat-select [formControl]="ticketRequiredControl" required>
+                        <mat-option *ngFor="let ticket of ticketClass" [value]='ticket.value'>
+                            {{ ticket.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ticketRequiredControl.hasError('required')">Please choose a ticket class</mat-error>
+                </mat-form-field>
+                <mat-form-field id="port">
+                    <mat-label>Port of Embarkation</mat-label>
+                    <mat-select [formControl]="portRequiredControl" required>
+                        <mat-option *ngFor="let port of portOfEmbarkation" [value]='port.value'>
+                            {{ port.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="portRequiredControl.hasError('required')">Please choose a port of embarkation</mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" (click)="back()" mat-raised-button class="btn" id="btn-back">Back</button>
+            <button type="button" (click)="inputValidation()" mat-raised-button class="btn" id="btn-next">Next</button>
         </div>
     </div>
 </div>

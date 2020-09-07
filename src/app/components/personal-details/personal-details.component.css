@@ -1,3 +1,75 @@
 p {
     text-align: center;
+    background-image: "../../../assets/images/ship-3401500_1280.jpg";
+}
+
+#boat-image {
+    width: 23rem;
+    height: 9rem;
+    display: block;
+    margin: auto;
+}
+
+#btn-back {
+    margin: 1.5rem 0rem 1rem 0.1rem;
+}
+
+.user-data {
+    margin-top: 1rem;
+}
+
+#btn-next {
+    float: right;
+    position: relative;
+    top: 1.5rem;
+}
+
+#name {
+    margin-bottom: 0.4rem;
+}
+
+#age {
+    margin-bottom: 0.4rem;
+    margin-left: 0.5rem;
+    line-height: 1.1rem;
+    top: -0.05rem;
+}
+
+#ticket {
+    margin-bottom: 0.4rem;
+    margin-left: 0.5rem;
+}
+
+#gender {
+    margin-bottom: 0.4rem;
+}
+
+@media (min-width: 640px) {
+    #boat-image {
+        width: 35rem;
+        height: 13.5rem;
+    }
+
+    #age {
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+        line-height: 1.2rem;
+        top: -0.09rem;
+    }
+    
+    #name {
+        margin-bottom: 0.5rem;
+    }
+
+    #gender {
+        margin-left: 1rem;
+    }
+
+    #ticket {
+        margin-left: 0rem;
+    }
+
+    #port {
+        margin-left: 1rem;
+    }
 }
