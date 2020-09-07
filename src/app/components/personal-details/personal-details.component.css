@@ -24,9 +24,52 @@ p {
     top: 1.5rem;
 }
 
+#name {
+    margin-bottom: 0.4rem;
+}
+
+#age {
+    margin-bottom: 0.4rem;
+    margin-left: 0.5rem;
+    line-height: 1.1rem;
+    top: -0.05rem;
+}
+
+#ticket {
+    margin-bottom: 0.4rem;
+    margin-left: 0.5rem;
+}
+
+#gender {
+    margin-bottom: 0.4rem;
+}
+
 @media (min-width: 640px) {
     #boat-image {
         width: 35rem;
         height: 13.5rem;
+    }
+
+    #age {
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+        line-height: 1.2rem;
+        top: -0.09rem;
+    }
+    
+    #name {
+        margin-bottom: 0.5rem;
+    }
+
+    #gender {
+        margin-left: 1rem;
+    }
+
+    #ticket {
+        margin-left: 0rem;
+    }
+
+    #port {
+        margin-left: 1rem;
     }
 }
