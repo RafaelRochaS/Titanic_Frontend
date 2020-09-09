@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface SelectValues {
   value: string;
@@ -36,7 +37,7 @@ export class PersonalDetailsComponent implements OnInit {
   genderRequiredControl = new FormControl('', Validators.required);
   portRequiredControl = new FormControl('', Validators.required);
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -86,6 +87,8 @@ export class PersonalDetailsComponent implements OnInit {
           return;
     } else {
       console.log('All entries filled');
+      this.router.navigate(['/family-details']);
     }
+    this.router.navigate(['/family-details']);
   }
 }

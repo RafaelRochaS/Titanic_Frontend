@@ -1,0 +1,25 @@
+#btn-next {
+    float: right;
+    position: relative;
+    top: 1.5rem;
+}
+
+#btn-back {
+    margin: 1.5rem 0rem 1rem 0.1rem;
+}
+
+p {
+    margin-bottom: 2rem;
+}
+
+#sibilings {
+    line-height: 1.1rem;
+    margin: 0.5rem 0.8rem 0rem 0.5rem;
+}
+
+#inside-image {
+    width: 14rem;
+    height: 10rem;
+    display: block;
+    margin: auto;
+}

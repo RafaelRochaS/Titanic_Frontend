@@ -47,7 +47,7 @@ jobs:
       - heroku/install
       - run: 
           name: Build for Production
-          command: npm build --prod
+          command: npm build --prod # this wont work
       - heroku/deploy-via-git
 
 
