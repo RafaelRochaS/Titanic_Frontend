@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FamilyDetailsComponent } from './components/family-details/family-details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
     LandingPageComponent,
     PersonalDetailsComponent,
     HeaderComponent,
+    FamilyDetailsComponent,
   ],
   imports: [
     BrowserModule,

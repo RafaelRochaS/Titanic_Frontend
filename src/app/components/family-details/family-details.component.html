@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <div class="col">
+            <p id="description">
+                While some people travelled alone, most where accompanied by family, be it their spouses, children, or sibilings. And the type of family that travelled
+                together heavily influenced the odds of one's survival, because  people travelling alone would probably focus on saving themselves, while people travelling
+                with family would first try to save their own. Hopefully.
+                <br >
+                <br >
+                So, who would you travel with? The algorithm works with sibilings and spouses in one category, and parents/children in another. So, fill the input below and
+                let's see the results!
+            </p>
+            <img src="../../../assets/images/interior.jpeg" alt="Inside ship cabin" id="inside-image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form class="user-data">
+                <mat-form-field id="sibilings">
+                        <mat-label>Sibilings + Spouse</mat-label>
+                        <input matInput type="number" [formControl]="siblingsRequiredControl" required>
+                        <mat-error *ngIf="siblingsRequiredControl.hasError('required')">Please input a value</mat-error>
+                </mat-form-field>
+                <mat-form-field id="children">
+                        <mat-label>Children + Parents</mat-label>
+                        <input matInput type="number" [formControl]="parentsRequiredControl" required>
+                        <mat-error *ngIf="parentsRequiredControl.hasError('required')">Please input a value</mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" (click)="back()" mat-raised-button class="btn" id="btn-back">Back</button>
+            <button type="button" (click)="inputValidation()" mat-raised-button class="btn" id="btn-next">Next</button>
+        </div>
+    </div>
+</div>
