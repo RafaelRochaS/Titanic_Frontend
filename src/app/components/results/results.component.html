@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <div class="col">
+            <img *ngIf="!survived" src="../../../assets/images/died.jpg" alt="You are dead!" class="results-img" >
+            <img *ngIf="survived" src="../../../assets/images/survived.jpeg" alt="You made it!" class="results-img">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p id="description">
+                {{ resultsText }}
+                <br >
+                <br >
+                {{ resultsSubText }}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" (click)="back()" mat-raised-button class="btn" id="btn-back">Back</button>
+        </div>
+    </div>
+</div>
