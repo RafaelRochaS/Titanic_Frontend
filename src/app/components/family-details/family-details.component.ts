@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-family-details',
@@ -11,7 +12,7 @@ export class FamilyDetailsComponent implements OnInit {
   siblingsRequiredControl = new FormControl('', Validators.required);
   parentsRequiredControl = new FormControl('', Validators.required);
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +41,7 @@ export class FamilyDetailsComponent implements OnInit {
       return;
     } else {
       console.log('All entries filled');
-      // navigate to results page
+      this.router.navigate(['/results']);
     }
   }
 }

@@ -14,6 +14,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FamilyDetailsComponent } from './components/family-details/family-details.component';
+import { ResultsComponent } from './components/results/results.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FamilyDetailsComponent } from './components/family-details/family-detai
     PersonalDetailsComponent,
     HeaderComponent,
     FamilyDetailsComponent,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,

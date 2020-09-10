@@ -1,0 +1,10 @@
+#btn-back {
+    margin: 1.5rem 0rem 1rem 0.1rem;
+}
+
+.results-img {
+    width: 10rem;
+    height: 10rem;
+    display: block;
+    margin: 1rem auto 0.3rem auto;
+}
