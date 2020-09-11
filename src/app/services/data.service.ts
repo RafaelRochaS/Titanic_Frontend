@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,11 @@ export class DataService {
   port: string;
   sibs: number;
   children: number;
+  survived: boolean;
 
-  constructor() { }
+  private titanicUrl = 'api/values';
+
+  constructor(private http: HttpClient) { }
 
   setName(name: string): void {
     this.name = name;
@@ -72,6 +76,27 @@ export class DataService {
     return this.children;
   }
 
+  setSurvived(survived: boolean): void {
+    this.survived = survived;
+  }
+
+  getSurvived(): boolean {
+    return this.generateSurvival();
+  }
+
+  generateSurvival(): boolean {
+    const value = Math.random();
+    let survived: boolean;
+
+    if (value > 0.5) {
+        survived = true;
+    } else {
+        survived = false;
+    }
+
+    return survived;
+  }
+
   printAll(): void {
     console.log('Name: ' + this.name);
     console.log('Age: ' + this.age);
@@ -80,5 +105,7 @@ export class DataService {
     console.log('Port: ' + this.port);
     console.log('Sibs: ' + this.sibs);
     console.log('Children: ' + this.children);
+    console.log('Survived: ' + this.survived);
   }
+
 }

@@ -8,15 +8,21 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ResultsComponent implements OnInit {
 
-  survived = false;
+  survived: boolean;
   resultsText: string;
   resultsSubText: string;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.getResults();
     this.setResultsTexts();
     this.dataService.printAll();
+  }
+
+  getResults(): void {
+    this.survived = this.dataService.getSurvived();
+    console.log(this.survived);
   }
 
   setResultsTexts(): void {
