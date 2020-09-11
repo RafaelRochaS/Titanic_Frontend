@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-results',
@@ -11,10 +12,11 @@ export class ResultsComponent implements OnInit {
   resultsText: string;
   resultsSubText: string;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.setResultsTexts();
+    this.dataService.printAll();
   }
 
   setResultsTexts(): void {

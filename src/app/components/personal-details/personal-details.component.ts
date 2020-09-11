@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { DataService } from '../../services/data.service';
+
 interface SelectValues {
   value: string;
   viewValue: string;
@@ -37,7 +39,7 @@ export class PersonalDetailsComponent implements OnInit {
   genderRequiredControl = new FormControl('', Validators.required);
   portRequiredControl = new FormControl('', Validators.required);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -83,12 +85,14 @@ export class PersonalDetailsComponent implements OnInit {
         this.genderRequiredControl.value === '' ||
         this.ticketRequiredControl.value === '' ||
         this.portRequiredControl.value === '') {
-          console.log('Something is not filled');
           return;
     } else {
-      console.log('All entries filled');
+      this.dataService.setName(this.nameRequiredControl.value);
+      this.dataService.setAge(this.ageRequiredControl.value);
+      this.dataService.setGender(this.genderRequiredControl.value);
+      this.dataService.setTicketClass(this.ticketRequiredControl.value);
+      this.dataService.setPort(this.portRequiredControl.value);
       this.router.navigate(['/family-details']);
     }
-    this.router.navigate(['/family-details']);
   }
 }

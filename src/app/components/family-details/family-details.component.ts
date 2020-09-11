@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-family-details',
@@ -12,7 +13,7 @@ export class FamilyDetailsComponent implements OnInit {
   siblingsRequiredControl = new FormControl('', Validators.required);
   parentsRequiredControl = new FormControl('', Validators.required);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -37,10 +38,10 @@ export class FamilyDetailsComponent implements OnInit {
 
     if (this.parentsRequiredControl.value === '' ||
         this.siblingsRequiredControl.value === '') {
-      console.log('Something is not filled');
       return;
     } else {
-      console.log('All entries filled');
+      this.dataService.setChildren(this.parentsRequiredControl.value);
+      this.dataService.setSibs(this.siblingsRequiredControl.value);
       this.router.navigate(['/results']);
     }
   }
