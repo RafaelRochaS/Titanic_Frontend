@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-results',
@@ -7,14 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  survived = false;
+  survived: boolean;
   resultsText: string;
   resultsSubText: string;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.getResults();
     this.setResultsTexts();
+    this.dataService.printAll();
+  }
+
+  getResults(): void {
+    this.survived = this.dataService.getSurvived();
+    console.log(this.survived);
   }
 
   setResultsTexts(): void {
