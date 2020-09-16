@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'landing-page', component: LandingPageComponent },
   { path: 'personal-details', component: PersonalDetailsComponent },
   { path: 'family-details', component: FamilyDetailsComponent },
-  { path: 'results', component: ResultsComponent }
+  { path: 'results', component: ResultsComponent },
+  { path: '**', redirectTo: '/landing-page' }
 ];
 
 @NgModule({
