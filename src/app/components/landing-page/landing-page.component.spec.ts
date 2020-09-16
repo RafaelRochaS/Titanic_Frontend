@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { LandingPageComponent } from './landing-page.component';
-import { HeaderComponent } from '../header/header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
@@ -10,7 +10,8 @@ describe('LandingPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingPageComponent, HeaderComponent ]
+      imports: [ RouterTestingModule ],
+      declarations: [ LandingPageComponent ]
     })
     .compileComponents();
   }));
@@ -24,19 +25,17 @@ describe('LandingPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-/*
-  it('should have header', () => {
-    const debugElement = fixture.debugElement.query(By.css('h1'));
-    expect(debugElement).toBeTruthy();
+
+  it('should have button', () => {
+    const html: HTMLElement = fixture.nativeElement;
+    const button = html.querySelector('button');
+    expect(button).toBeTruthy();
   });
 
-  it('should have sub-header', () => {
-    const debugElement = fixture.debugElement.query(By.css('h2'));
-    expect(debugElement).toBeTruthy();
+  it('should have paragraph', () => {
+    const html: HTMLElement = fixture.nativeElement;
+    const p = html.querySelector('p');
+    expect(p).toBeTruthy();
   });
-*/
-  it('should have button', () => {
-    const debugElement = fixture.debugElement.query(By.css('button'));
-    expect(debugElement).toBeTruthy();
-  });
+
 });

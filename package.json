@@ -7,7 +7,7 @@
     "build": "ng build --prod",
     "test": "ng test --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --webdriverUpdate=false",
     "lite-server": "./node_modules/.bin/lite-server --baseDir='dist/titanic'",
     "coverage": "./node_modules/.bin/coveralls",
     "package-audit": "./node_modules/.bin/npm-audit --low=10"
@@ -26,6 +26,7 @@
     "@angular/router": "~10.0.6",
     "bootstrap": "^4.5.2",
     "express": "^4.17.1",
+    "protractor": "^7.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -51,7 +52,6 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "lite-server": "^2.5.4",
     "npm-audit-pipeline": "^0.4.3",
-    "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
