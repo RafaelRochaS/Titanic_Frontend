@@ -26,10 +26,14 @@ describe('LandingPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have button', () => {
-    const html: HTMLElement = fixture.nativeElement;
-    const button = html.querySelector('button');
-    expect(button).toBeTruthy();
+  it('should have next button', () => {
+    const nextButton = fixture.debugElement.query(By.css('#btn-next'));
+    expect(nextButton).toBeTruthy();
+  });
+
+  it('should have github button', () => {
+    const githubButton = fixture.debugElement.query(By.css('#btn-github'));
+    expect(githubButton).toBeTruthy();
   });
 
   it('should have paragraph', () => {
