@@ -49,3 +49,5 @@ baseline.json
 .history
 
 package-lock.json
+
+*.zip
