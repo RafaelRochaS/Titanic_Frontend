@@ -104,4 +104,14 @@ export class DataService {
     console.log('Survived: ' + this.survived);
   }
 
+  resetValues(): void {
+    this.name = '';
+    this.age = 0;
+    this.gender = '';
+    this.ticketClass = '';
+    this.port = '';
+    this.sibs = 0;
+    this.children = 0;
+    this.survived = false;
+  }
 }

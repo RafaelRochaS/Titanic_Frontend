@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ResultsComponent } from './results.component';
 import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ResultsComponent', () => {
   let component: ResultsComponent;
@@ -10,7 +11,7 @@ describe('ResultsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ],
+      imports: [ HttpClientModule, RouterTestingModule ],
       declarations: [ ResultsComponent ]
     })
     .compileComponents();
@@ -40,6 +41,11 @@ describe('ResultsComponent', () => {
 
   it('should have back button', () => {
     const backButton = fixture.debugElement.query(By.css('#btn-back'));
+    expect(backButton).toBeTruthy();
+  });
+
+  it('should have try again button', () => {
+    const backButton = fixture.debugElement.query(By.css('#btn-again'));
     expect(backButton).toBeTruthy();
   });
 });
