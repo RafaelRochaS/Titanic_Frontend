@@ -6,7 +6,7 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 
 jobs:
-  build-test:  # If more build steps are required, add them here
+  build-test:
     working_directory: ~/titanic
     docker:
       - image: circleci/node:10-browsers
@@ -24,16 +24,16 @@ jobs:
       - run:
           name: Linting
           command: npm run lint
-      #- run:
-      #    name: Testing
-      #    command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run:
+          name: Testing
+          command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
           name: Security Audit
           command: npm run package-audit
       - sonarcloud/scan
-      #- coveralls/upload:
-      #    verbose: true
-      #    path_to_lcov: "coverage/*/lcov.info"
+      - coveralls/upload:
+          verbose: true
+          path_to_lcov: "coverage/*/lcov.info"
   deploy-develop:
     executor: heroku/default
     steps:

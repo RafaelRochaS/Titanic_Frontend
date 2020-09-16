@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +14,7 @@ export class DataService {
   children: number;
   survived: boolean;
 
-  private titanicUrl = 'api/values';
-
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   setName(name: string): void {
     this.name = name;
