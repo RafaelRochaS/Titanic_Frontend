@@ -8,11 +8,18 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit {
 
+  githubUrl = 'https://github.com/RafaelRochaS/Titanic_Frontend';
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
   navigatePersonalDetails(): void {
     this.router.navigate(['/personal-details']);
+  }
+
+  openGithub(): void {
+    window.open(this.githubUrl);
   }
 }
