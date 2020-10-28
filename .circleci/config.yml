@@ -27,9 +27,9 @@ jobs:
       - run:
           name: Testing
           command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      - run:
-          name: Security Audit
-          command: npm run package-audit
+      #- run:
+      #    name: Security Audit
+      #    command: npm run package-audit
       - sonarcloud/scan
       - coveralls/upload:
           verbose: true
