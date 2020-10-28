@@ -16,8 +16,4 @@ describe('DataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('should return boolean on getSurvived()', () => {
-    expect(service.getSurvived()).toEqual(jasmine.any(Boolean));
-  });
 });

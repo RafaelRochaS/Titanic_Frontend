@@ -17,13 +17,22 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResults();
-    this.setResultsTexts();
     this.dataService.printAll();
   }
 
   getResults(): void {
-    this.survived = this.dataService.getSurvived();
-    console.log(this.survived);
+    this.dataService
+      .getSurvived()
+      // tslint:disable-next-line: deprecation
+      .subscribe(
+        (res) => {
+          if (res.survived === null){
+            window.alert('Request failed. Please wait a few minutes and try again. If the problem persists, contact the admin.');
+            this.router.navigate(['/landing-page']);
+          }
+          this.survived = res.survived;
+          this.setResultsTexts();
+        });
   }
 
   setResultsTexts(): void {
