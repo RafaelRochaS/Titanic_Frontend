@@ -39,15 +39,15 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git
-          appname: $HEROKU_APP_NAME_DEVELOP
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_APP_NAME_DEVELOP
   deploy-prod:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git
-          appname: $HEROKU_APP_NAME
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_APP_NAME
           
 
 
