@@ -40,15 +40,15 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
+          app-name: $HEROKU_APP_NAME_DEVELOP
   deploy-prod:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
-      - run: 
-          name: Build for Production
-          command: npm build --prod # this wont work
       - heroku/deploy-via-git
+          app-name: $HEROKU_APP_NAME
+          
 
 
 workflows:

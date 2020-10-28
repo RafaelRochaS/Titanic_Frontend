@@ -1,83 +1,90 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { environment } from '../../environments/environment';
+import { DataModel } from '../models/data.model';
+import { ResultModel } from '../models/result.model';
+import { PayloadModel } from '../models/payload.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  name: string;
-  age: number;
-  gender: string;
-  ticketClass: string;
-  port: string;
-  sibs: number;
-  children: number;
-  survived: boolean;
+  data: DataModel = {
+    name: '',
+    age: 0,
+    gender: '',
+    ticketClass: '',
+    port: '',
+    sibs: 0,
+    children: 0,
+    survived: true
+  };
 
-  constructor() { }
+  options = {headers: {'Content-Type': 'application/json'}};
+
+  constructor(private http: HttpClient) { }
 
   setName(name: string): void {
-    this.name = name;
+    this.data.name = name;
   }
 
   getName(): string {
-    return this.name;
+    return this.data.name;
   }
 
   setAge(age: number): void {
-    this.age = age;
+    this.data.age = age;
   }
 
   getAge(): number {
-    return this.age;
+    return this.data.age;
   }
 
   setGender(gender: string): void {
-    this.gender = gender;
+    this.data.gender = gender;
   }
 
   getGender(): string {
-    return this.gender;
+    return this.data.gender;
   }
 
   setTicketClass(ticketClass: string): void {
-    this.ticketClass = ticketClass;
+    this.data.ticketClass = ticketClass;
   }
 
   getTicketClass(): string {
-    return this.ticketClass;
+    return this.data.ticketClass;
   }
 
   setPort(port: string): void {
-    this.port = port;
+    this.data.port = port;
   }
 
   getPort(): string {
-    return this.port;
+    return this.data.port;
   }
 
   setSibs(sibs: number): void {
-    this.sibs = sibs;
+    this.data.sibs = sibs;
   }
 
   getSibs(): number {
-    return this.sibs;
+    return this.data.sibs;
   }
 
   setChildren(children: number): void {
-    this.children = children;
+    this.data.children = children;
   }
 
   getChildren(): number {
-    return this.children;
+    return this.data.children;
   }
 
   setSurvived(survived: boolean): void {
-    this.survived = survived;
-  }
-
-  getSurvived(): boolean {
-    return this.generateSurvival();
+    this.data.survived = survived;
   }
 
   generateSurvival(): boolean {
@@ -93,25 +100,60 @@ export class DataService {
     return survived;
   }
 
+  getSurvived(): Observable<ResultModel> {
+    const payload = this.setPayload();
+
+    return this.http.post<ResultModel>(`${environment.API}/api/model/predict`,
+                                        JSON.stringify(payload),
+                                        this.options);
+  }
+
+  setPayload(): PayloadModel {
+    const payload: PayloadModel = {
+      passenger_id: this.generatePassengerId(),
+      pclass: parseInt(this.data.ticketClass, 10),
+      sex: this.data.gender,
+      age: this.data.age,
+      sibsp: this.data.sibs,
+      parch: this.data.children,
+      fare: this.generateFare(),
+      cabin: this.generateCabin(),
+      embarked: this.data.port
+    };
+
+    return payload;
+  }
+
+  generatePassengerId(): number {
+    return 0;
+  }
+
+  generateFare(): number {
+    return 1;
+  }
+
+  generateCabin(): string {
+    return 'CAB';
+  }
+
   printAll(): void {
-    console.log('Name: ' + this.name);
-    console.log('Age: ' + this.age);
-    console.log('Gender: ' + this.gender);
-    console.log('Ticket Class: ' + this.ticketClass);
-    console.log('Port: ' + this.port);
-    console.log('Sibs: ' + this.sibs);
-    console.log('Children: ' + this.children);
-    console.log('Survived: ' + this.survived);
+    console.log('Name: ' + this.data.name);
+    console.log('Age: ' + this.data.age);
+    console.log('Gender: ' + this.data.gender);
+    console.log('Ticket Class: ' + this.data.ticketClass);
+    console.log('Port: ' + this.data.port);
+    console.log('Sibs: ' + this.data.sibs);
+    console.log('Children: ' + this.data.children);
   }
 
   resetValues(): void {
-    this.name = '';
-    this.age = 0;
-    this.gender = '';
-    this.ticketClass = '';
-    this.port = '';
-    this.sibs = 0;
-    this.children = 0;
-    this.survived = false;
+    this.data.name = '';
+    this.data.age = 0;
+    this.data.gender = '';
+    this.data.ticketClass = '';
+    this.data.port = '';
+    this.data.sibs = 0;
+    this.data.children = 0;
+    this.data.survived = false;
   }
 }

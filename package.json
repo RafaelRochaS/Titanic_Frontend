@@ -10,7 +10,8 @@
     "e2e": "ng e2e --webdriverUpdate=false",
     "lite-server": "./node_modules/.bin/lite-server --baseDir='dist/titanic'",
     "coverage": "./node_modules/.bin/coveralls",
-    "package-audit": "./node_modules/.bin/npm-audit --low=10"
+    "package-audit": "./node_modules/.bin/npm-audit --low=10",
+    "heroku-postbuild": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
